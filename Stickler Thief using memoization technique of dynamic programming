@@ -1,7 +1,12 @@
-Stickler the thief wants to loot money from a society having n houses in a single line. He is a weird person and follows a certain rule when looting the houses. According to the rule, he will never loot two consecutive houses. At the same time, he wants to maximize the amount he loots. The thief knows which house has what amount of money but is unable to come up with an optimal looting strategy. He asks for your help to find the maximum money he can get if he strictly follows the rule. Each house has a[i] amount of money present in it.
+Stickler the thief wants to loot money from a society having n houses in a single line. He is a weird person and follows a certain rule
+when looting the houses. According to the rule, he will never loot two consecutive houses. At the same time, 
+he wants to maximize the amount he loots. The thief knows which house has what amount of money but is unable to come up with an optimal
+looting strategy. He asks for your help to find the maximum money he can get if he strictly follows the rule. 
+Each house has a[i] amount of money present in it.
 
 Solution:
-Here we begin to traverse from the end. Lets say i=n-1, then store the maximum possible home that can be looted form the i to end of the input array.
+Here we begin to traverse from the end. Lets say i=n-1, then store the maximum possible home that can be looted form the i to end of
+the input array.
 assume input as [1,100,5,10,200,500]
 i=6
 now total loot from last 3 home is obvious as:--- [0,0,0,510,200,500]
