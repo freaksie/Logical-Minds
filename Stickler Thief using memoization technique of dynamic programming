@@ -1,0 +1,62 @@
+Stickler the thief wants to loot money from a society having n houses in a single line. He is a weird person and follows a certain rule when looting the houses. According to the rule, he will never loot two consecutive houses. At the same time, he wants to maximize the amount he loots. The thief knows which house has what amount of money but is unable to come up with an optimal looting strategy. He asks for your help to find the maximum money he can get if he strictly follows the rule. Each house has a[i] amount of money present in it.
+
+Solution:
+Here we begin to traverse from the end. Lets say i=n-1, then store the maximum possible home that can be looted form the i to end of the input array.
+assume input as [1,100,5,10,200,500]
+i=6
+now total loot from last 3 home is obvious as:--- [0,0,0,510,200,500]
+At i=N-4 i.e. last 4th element find max of last two element and add it to a[i]=n-4:---[0,0,505,510,200,500]
+
+for rest of the element add the "max_so_far"(as in code, it keeps track of maximum in i+1 to n) to the element and then update max_so_far if needed.
+
+Input:
+2
+6
+5 5 10 100 10 5
+3
+1 2 3
+
+Output:
+110
+4
+
+<----------------------------------------------------------CPP CODE----------------------------------------------------------------------------------------->
+#include<bits/stdc++.h>
+using namespace std;
+typedef long int l;
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        l n;
+        cin>>n;
+        l a[n];
+        for(l i = 0;i<n;i++)
+            cin>>a[i];
+        l max_so_far=0;
+        l ans=0;
+        for(l i=n-1;i>=0;i--)
+        {
+            if (i==n-3)
+            {
+                a[i]+=a[n-1];
+                max_so_far=max(max(a[n-1],a[n-2]),a[n-3]);
+            }
+            else if(i==n-4)
+                a[i]+=max(a[n-1],a[n-2]);
+            else if(i<n-4)
+            {
+                a[i]+=max_so_far;
+                max_so_far=max(a[i+1],max_so_far);
+            }
+            if(ans<a[i])
+                ans=a[i];
+            if(i==n-1 or i==n-2)
+                continue;
+        }
+        cout<<ans<<endl;
+
+    }
+}
